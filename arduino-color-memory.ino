@@ -1,18 +1,19 @@
 #include "StageInterface.h"
 #include "BaseStage.h"
+#include "StartupStage.h"
 
 class StagesLocator;
 
-class StartupStage: public BaseStage
-{
-  using BaseStage::BaseStage;
+// class StartupStage: public BaseStage
+// {
+//   using BaseStage::BaseStage;
 
-  private:
-    void waitForAnyKey();
+//   private:
+//     void waitForAnyKey();
 
-  public: 
-    StageInterface* run();
-};
+//   public: 
+//     StageInterface* run();
+// };
 
 class PlaySequenceStage: public BaseStage
 {
