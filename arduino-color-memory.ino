@@ -1,14 +1,7 @@
 #include "StageInterface.h"
+#include "BaseStage.h"
 
 class StagesLocator;
-
-class BaseStage: public StageInterface
-{
-  public: 
-    BaseStage(StagesLocator* stagesLocator) {
-      mStagesLocator = stagesLocator;
-    }
-};
 
 class StartupStage: public BaseStage
 {
