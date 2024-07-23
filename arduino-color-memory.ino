@@ -2,15 +2,7 @@
 #include "BaseStage.h"
 #include "StartupStage.h"
 #include "PlaySequenceStage.h"
-
-class StagesLocator;
-
-class StagesLocator 
-{
-  public: 
-    const StartupStage* startupStage = new StartupStage(this);
-    const PlaySequenceStage* playSequenceStage = new PlaySequenceStage(this);
-};
+#include "StagesLocator.h"
 
 StageInterface* PlaySequenceStage::run() {
   for (int i = 100; i <= 800; i += 100) {
