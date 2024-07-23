@@ -1,12 +1,6 @@
-class StagesLocator;
+#include "StageInterface.h"
 
-class StageInterface 
-{
-  protected:
-    StagesLocator* mStagesLocator;
-  public:
-    virtual StageInterface* run() = 0;
-};
+class StagesLocator;
 
 class BaseStage: public StageInterface
 {
