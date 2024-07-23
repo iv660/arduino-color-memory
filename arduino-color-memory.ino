@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "StageInterface.h"
 #include "BaseStage.h"
 #include "StartupStage.h"
