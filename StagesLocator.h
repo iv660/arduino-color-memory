@@ -7,8 +7,8 @@
 class StagesLocator 
 {
   public: 
-    const StartupStage* startupStage = new StartupStage(this);
-    const PlaySequenceStage* playSequenceStage = new PlaySequenceStage(this);
+    StartupStage* startupStage = new StartupStage(this);
+    PlaySequenceStage* playSequenceStage = new PlaySequenceStage(this);
 };
 
 #endif // !STAGESLOCATOR_H
