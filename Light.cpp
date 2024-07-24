@@ -19,7 +19,7 @@ void Light::off()
 
 void Light::blink(int cycleMillis, int repeat)
 {
-    for (int i = 0; i <= repeat; i++) {
+    for (int i = 1; i <= repeat; i++) {
         on();
         delay(cycleMillis / 2);
         off();

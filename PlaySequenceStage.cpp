@@ -19,7 +19,7 @@ StageInterface* PlaySequenceStage::run()
     }
 
     SignalsDisplay display;
-    display.red.blink(100, 2);
+    display.all.blink(100, 1);
 
   return mStagesLocator->startupStage;
 }

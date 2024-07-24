@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "Light.h"
+#include "MultiLight.h"
 
 class SignalsDisplay 
 {
@@ -12,6 +13,7 @@ class SignalsDisplay
         Light white = (PIN7);
         Light green = (9);
         Light blue = (11);
+        MultiLight all = MultiLight((int []){PIN3, PIN5, PIN7, 9, 11});
 };
 
 #endif // SIGNALSDISPLAY_H
