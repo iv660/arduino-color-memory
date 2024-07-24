@@ -4,7 +4,7 @@
 class SequenceDisplay
 {
     private:
-        int valuePins[2] = {PIN3, PIN5};
+        int valuePins[3] = {PIN3, PIN5, PIN7};
         int getOutputPinFor(int value);
     public:
         void show(int value, int durationMillis);
