@@ -1,9 +1,11 @@
 #include <Arduino.h>
 #include "SequenceDisplay.h"
+#include "Light.h"
 
 void SequenceDisplay::show(int value, int durationMillis)
 {
-    digitalWrite(LED_BUILTIN, HIGH);
+    Light light(LED_BUILTIN);
+    light.on();
     delay(durationMillis);
-    digitalWrite(LED_BUILTIN, LOW);
+    light.off();
 }
