@@ -3,6 +3,7 @@
 #include "StageInterface.h"
 #include "StagesLocator.h"
 #include "Light.h"
+#include "SignalsDisplay.h"
 
 void PlaySequenceStage::waitFor(int pauseMillis)
 {
@@ -17,15 +18,8 @@ StageInterface* PlaySequenceStage::run()
         waitFor(pause);
     }
 
-    Light light(LED_BUILTIN);
-    light.on();
-    delay(100);
-    light.off();
-    delay(100);
-    light.on();
-    delay(100);
-    light.off();
-    delay(100);
+    SignalsDisplay display;
+    display.red.blink(100, 2);
 
   return mStagesLocator->startupStage;
 }

@@ -9,6 +9,7 @@ class Light
         Light(int pin);
         void on();
         void off();
+        void blink(int cycleMillis, int repeat);
 };
 
 #endif // LIGHT_H

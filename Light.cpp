@@ -16,3 +16,13 @@ void Light::off()
 {
     digitalWrite(pin, LOW);
 }
+
+void Light::blink(int cycleMillis, int repeat)
+{
+    for (int i = 0; i <= repeat; i++) {
+        on();
+        delay(cycleMillis / 2);
+        off();
+        delay(cycleMillis / 2);
+    }
+}
