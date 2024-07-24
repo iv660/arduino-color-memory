@@ -1,32 +1,32 @@
-#include "Arduino.h"
+#include <Arduino.h>
 #include "Sequence.h"
 
 int Sequence::getPointer()
 {
-    return shown;
+    return pointer;
 }
 
 int Sequence::nextPointer()
 {
-    return shown++;
+    return pointer++;
 }
 
 bool Sequence::hasNext()
 {
-    return shown < length;
+    return pointer <= length - 1;
 }
 
 int Sequence::next()
 {
-    return sequence[nextPointer()];
+    return values[nextPointer()];
 }
 
 void Sequence::generate(int length, int minValue, int maxValue)
 {
     this->length = length;
-    shown = 0;
+    pointer = 0;
 
     for (int index = 0; index <= length - 1; index++) {
-        sequence[index] = random(minValue, maxValue + 1);
+        values[index] = random(minValue, maxValue + 1);
     }
 }

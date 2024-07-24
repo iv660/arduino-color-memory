@@ -4,9 +4,9 @@
 class Sequence 
 {
     private:
-        int sequence[99];
+        int values[99];
         int length;
-        int shown = 0;
+        int pointer = 0;
 
         int getPointer();
         int nextPointer();
