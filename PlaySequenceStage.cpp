@@ -5,14 +5,15 @@
 
 void PlaySequenceStage::waitFor(int pauseMillis)
 {
+    delay(pauseMillis);
 }
 
 StageInterface* PlaySequenceStage::run() 
 {
     sequence.generate(sequenceLength);
     while (sequence.hasNext()) {
-        waitFor(pause);
         sequenceDisplay.show(sequence.next(), duration);
+        waitFor(pause);
     }
 
     digitalWrite(LED_BUILTIN, HIGH);
