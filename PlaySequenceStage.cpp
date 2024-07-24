@@ -11,7 +11,7 @@ void PlaySequenceStage::waitFor(int pauseMillis)
 
 StageInterface* PlaySequenceStage::run() 
 {
-    sequence.generate(sequenceLength);
+    sequence.generate(sequenceLength, minValue, maxValue);
     while (sequence.hasNext()) {
         sequenceDisplay.show(sequence.next(), duration);
         waitFor(pause);

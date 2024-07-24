@@ -14,7 +14,9 @@ class PlaySequenceStage: public BaseStage
     SequenceDisplay sequenceDisplay;
     int duration = 700;
     int pause = 300;
-    int sequenceLength = 2;
+    int sequenceLength = 5;
+    int minValue = 1;
+    int maxValue = 2;
 
     void waitFor(int pauseMillis);
 
