@@ -2,7 +2,7 @@
 #include "StageInterface.h"
 #include "BaseStage.h"
 #include "StartupStage.h"
-#include "PlaySequenceStage.h"
+#include "PlayRoundStage.h"
 #include "StagesLocator.h"
 
 const StagesLocator* stagesLocator = new StagesLocator();

@@ -1,16 +1,16 @@
 #include <Arduino.h>
-#include "PlaySequenceStage.h"
+#include "PlayRoundStage.h"
 #include "StageInterface.h"
 #include "StagesLocator.h"
 #include "Light.h"
 #include "SignalsDisplay.h"
 
-void PlaySequenceStage::waitFor(int pauseMillis)
+void PlayRoundStage::waitFor(int pauseMillis)
 {
     delay(pauseMillis);
 }
 
-StageInterface* PlaySequenceStage::run() 
+StageInterface* PlayRoundStage::run() 
 {
     sequence.generate(sequenceLength, minValue, maxValue);
     while (sequence.hasNext()) {

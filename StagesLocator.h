@@ -2,13 +2,13 @@
 #define STAGESLOCATOR_H
 
 #include "StartupStage.h"
-#include "PlaySequenceStage.h"
+#include "PlayRoundStage.h"
 
 class StagesLocator 
 {
   public: 
     StartupStage* startupStage = new StartupStage(this);
-    PlaySequenceStage* playSequenceStage = new PlaySequenceStage(this);
+    PlayRoundStage* playRoundStage = new PlayRoundStage(this);
 };
 
 #endif // !STAGESLOCATOR_H

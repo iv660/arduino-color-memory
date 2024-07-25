@@ -1,12 +1,12 @@
-#ifndef PLAYSEQUENCESTAGE_H
-#define PLAYSEQUENCESTAGE_H
+#ifndef PLAYROUNDSTAGE_H
+#define PLAYROUNDSTAGE_H
 
 #include "BaseStage.h"
 #include "StageInterface.h"
 #include "Sequence.h"
 #include "SequenceDisplay.h"
 
-class PlaySequenceStage: public BaseStage
+class PlayRoundStage: public BaseStage
 {
   using BaseStage::BaseStage;
   private:
@@ -24,4 +24,4 @@ class PlaySequenceStage: public BaseStage
     StageInterface* run();
 };
 
-#endif // !PLAYSEQUENCESTAGE_H
+#endif // !PLAYROUNDSTAGE_H
