@@ -12,15 +12,34 @@ void PlayRoundStage::waitFor(int pauseMillis)
 
 StageInterface* PlayRoundStage::run() 
 {
+    playSequence();
+    playReadyForInputAnimation();
+    bool inputIsCorrect = checkInputAgainstSequence();
+    
+    return getNextStage(inputIsCorrect);
+}
+
+void PlayRoundStage::playSequence()
+{
     sequence.generate(sequenceLength, minValue, maxValue);
     while (sequence.hasNext()) {
         sequenceDisplay.show(sequence.next(), duration);
         waitFor(pause);
     }
-
-    SignalsDisplay display;
-    display.all.blink(100, 1);
-
-  return mStagesLocator->startupStage;
 }
 
+void PlayRoundStage::playReadyForInputAnimation()
+{
+    SignalsDisplay display;
+    display.all.blink(100, 1);
+}
+
+bool PlayRoundStage::checkInputAgainstSequence()
+{
+    return false;
+}
+
+StageInterface* PlayRoundStage::getNextStage(bool inputIsCorrect)
+{
+    return stagesLocator->startupStage;
+}

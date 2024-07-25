@@ -10,7 +10,7 @@ class StagesLocator;
 class StageInterface 
 {
   protected:
-    StagesLocator* mStagesLocator;
+    StagesLocator* stagesLocator;
   public:
     virtual StageInterface* run() = 0;
 };

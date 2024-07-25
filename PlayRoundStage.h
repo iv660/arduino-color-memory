@@ -19,6 +19,10 @@ class PlayRoundStage: public BaseStage
     int maxValue = 3;
 
     void waitFor(int pauseMillis);
+    void playSequence();
+    void playReadyForInputAnimation();
+    bool checkInputAgainstSequence();
+    StageInterface* getNextStage(bool inputIsCorrect);
 
   public:
     StageInterface* run();

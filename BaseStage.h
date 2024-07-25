@@ -10,7 +10,7 @@ class BaseStage: public StageInterface
 {
   public: 
     BaseStage(StagesLocator* stagesLocator) {
-      mStagesLocator = stagesLocator;
+      stagesLocator = stagesLocator;
     }
 };
 

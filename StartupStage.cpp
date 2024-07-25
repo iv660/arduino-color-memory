@@ -40,6 +40,6 @@ void StartupStage::waitForAnyKey() {
 StageInterface* StartupStage::run() {
   waitForAnyKey();
 
-  return mStagesLocator->playRoundStage;
+  return stagesLocator->playRoundStage;
 }
 
