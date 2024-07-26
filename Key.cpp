@@ -7,25 +7,44 @@ void Key::updateReading()
 
     reading = digitalRead(pin);
 
-    if (reading != lastState) {
-        lastState = reading;
-        lastDebounceTime = millis();
+    if (stateIsChanged(reading)) {
+        setMomentaryState(reading);
     }
 
-    if (millisSinceLastDebounceTime() <= debounceDelay) {
+    if (shouldDebounce()) {
         return;
     }
 
-    if (reading == buttonState) {
-        return;
-    }
-
-    buttonState = reading;
+    setPersistantState(reading);
 }
 
-unsigned long Key::millisSinceLastDebounceTime()
+bool Key::stateIsChanged(int newState)
 {
-    return millis() - lastDebounceTime;
+    if (newState == momentaryState) {
+        return false;
+    }
+
+    return true;
+}
+
+void Key::setMomentaryState(int newState)
+{
+    lastDebounceTime = millis();
+    momentaryState = newState;
+}
+
+void Key::setPersistantState(int newState)
+{
+    persistantState = newState;
+}
+
+bool Key::shouldDebounce()
+{
+    if (millis() - lastDebounceTime <= debounceDelay) {
+        return true;
+    }
+
+    return false;
 }
 
 Key::Key(int pin)
@@ -37,13 +56,12 @@ Key::Key(int pin)
 bool Key::isUp()
 {
     updateReading();
-    switch (buttonState)
-    {
-    case HIGH:
+
+    if (persistantState == HIGH) {
         return false;
-    default:
-        return true;
     }
+
+    return true;
 }
 
 bool Key::isDown()

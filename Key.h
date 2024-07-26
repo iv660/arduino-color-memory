@@ -7,13 +7,17 @@ class Key
 {
 private:
     int pin;
-    int lastState = LOW;
-    int buttonState = LOW;
+
     unsigned long lastDebounceTime = 0;
     unsigned long debounceDelay = 50;
+    int momentaryState = LOW;
+    int persistantState = LOW;
 
     void updateReading();
-    unsigned long millisSinceLastDebounceTime();
+    bool stateIsChanged(int newState);
+    void setMomentaryState(int newState);
+    void setPersistantState(int newState);
+    bool shouldDebounce();
 public:
     Key(int pin);
     bool isUp();
