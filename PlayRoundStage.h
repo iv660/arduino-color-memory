@@ -5,6 +5,7 @@
 #include "StageInterface.h"
 #include "Sequence.h"
 #include "SequenceDisplay.h"
+#include "Keypad.h"
 
 class PlayRoundStage: public BaseStage
 {
@@ -12,6 +13,7 @@ class PlayRoundStage: public BaseStage
   private:
     Sequence sequence;
     SequenceDisplay sequenceDisplay;
+    Keypad keypad;
     int duration = 700;
     int pause = 300;
     int sequenceLength = 5;

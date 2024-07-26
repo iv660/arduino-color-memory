@@ -30,3 +30,8 @@ void Sequence::generate(int length, int minValue, int maxValue)
         values[index] = random(minValue, maxValue + 1);
     }
 }
+
+bool Sequence::checkInput(int index, int input)
+{
+    return input == values[index - 1];
+}

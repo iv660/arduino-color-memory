@@ -12,6 +12,7 @@ StageInterface* currentStage = stagesLocator->startupStage;
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(2, INPUT);
+  // Serial.begin(300);
 }
 
 // the loop function runs over and over again forever

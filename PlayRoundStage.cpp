@@ -36,7 +36,14 @@ void PlayRoundStage::playReadyForInputAnimation()
 
 bool PlayRoundStage::checkInputAgainstSequence()
 {
-    return false;
+    // for (int index = 1; index <= sequenceLength; index++) {
+    //     int key = keypad.getInput();
+    //     if (false == sequence.checkInput(index, key)) {
+    //         return false;
+    //     }
+    // }
+    
+    return true;
 }
 
 StageInterface* PlayRoundStage::getNextStage(bool inputIsCorrect)
