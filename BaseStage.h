@@ -7,6 +7,8 @@ class StagesLocator;
 
 class BaseStage: public StageInterface
 {
+  protected:
+    StagesLocator* stagesLocator;
   public: 
     BaseStage(StagesLocator* stagesLocator);
 };

@@ -2,5 +2,5 @@
 #include "StagesLocator.h"
 
 BaseStage::BaseStage(StagesLocator* stagesLocator) {
-    stagesLocator = stagesLocator;
+    this->stagesLocator = stagesLocator;
 }

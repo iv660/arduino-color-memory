@@ -4,8 +4,10 @@
 #include "const.h"
 #include "Key.h"
 #include "Light.h"
+#include "SignalsDisplay.h"
 
 void StartupStage::waitForKeyPress() {
+
   pinMode(KEY1, INPUT);
   
   while (digitalRead(KEY1) == LOW);
@@ -15,8 +17,16 @@ void StartupStage::waitForKeyPress() {
 
 StageInterface* StartupStage::run() 
 {
+  SignalsDisplay signals;
+  signals.blue.blink(300, 3);
+
   waitForKeyPress();
 
-  return stagesLocator->experimentStage;
+  signals.green.blink(300, 3);
+
+  return stagesLocator->startupStage;
+  // StagesLocator localStagesLocator; 
+  // return localStagesLocator.startupStage;
+  // return stagesLocator->experimentStage;
 }
 
