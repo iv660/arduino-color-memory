@@ -8,6 +8,7 @@ StageInterface* currentStage = stagesLocator->startupStage;
 // the setup function runs once when you press reset or power the board
 void setup() 
 {
+  randomSeed(analogRead(A5));
   // Serial.begin(300);
 }
 
