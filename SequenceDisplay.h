@@ -1,6 +1,8 @@
 #if !defined(SEQUENCEDISPLAY_H)
 #define SEQUENCEDISPLAY_H
 
+#include <Arduino.h>
+
 class SequenceDisplay
 {
     private:

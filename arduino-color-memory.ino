@@ -6,7 +6,7 @@
 #include "StagesLocator.h"
 
 const StagesLocator* stagesLocator = new StagesLocator();
-StageInterface* currentStage = stagesLocator->experimentStage;
+StageInterface* currentStage = stagesLocator->startupStage;
 
 // the setup function runs once when you press reset or power the board
 void setup() {

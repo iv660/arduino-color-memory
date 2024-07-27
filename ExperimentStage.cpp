@@ -6,13 +6,7 @@
 
 StageInterface *ExperimentStage::run()
 {
-    Key key(KEY1);
     SignalsDisplay signals;
-
-    while (key.isUp());
-    signals.red.on();
-    while (key.isDown());
-    signals.red.off();
 
     signals.all.blink(50, 2);
 

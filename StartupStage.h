@@ -9,7 +9,7 @@ class StartupStage: public BaseStage
   using BaseStage::BaseStage;
 
   private:
-    void waitForAnyKey();
+    void waitForKeyPress();
 
   public: 
     StageInterface* run();
