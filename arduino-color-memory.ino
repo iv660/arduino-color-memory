@@ -9,7 +9,7 @@ StageInterface* currentStage = stagesLocator->startupStage;
 void setup() 
 {
   randomSeed(analogRead(A5));
-  // Serial.begin(300);
+  // Serial.begin(9600);
 }
 
 // the loop function runs over and over again forever
