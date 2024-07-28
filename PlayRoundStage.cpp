@@ -48,5 +48,8 @@ bool PlayRoundStage::checkInputAgainstSequence()
 
 StageInterface* PlayRoundStage::getNextStage(bool inputIsCorrect)
 {
-    return stagesLocator->startupStage;
+    if (inputIsCorrect) {
+        return stagesLocator->roundWonStage;
+    }
+    return stagesLocator->roundLostStage;
 }

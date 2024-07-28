@@ -7,5 +7,7 @@
 #define KEY4 8
 #define KEY5 10
 
+#define START_KEY KEY1
+
 
 #endif // CONST_H
