@@ -6,7 +6,7 @@
 void RoundLostStage::playRoundLostAnimation()
 {
     SignalsDisplay signals;
-    signals.red.blink(1000, 1);
+    signals.red.blink(1500, 1);
 }
 
 void RoundLostStage::waitForKey()

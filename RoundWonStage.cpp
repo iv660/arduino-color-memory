@@ -5,7 +5,7 @@
 
 void RoundWonStage::playRoundWonAnimation()
 {
-    signals.green.blink(500, 1);
+    signals.green.blink(1500, 1);
 }
 
 void RoundWonStage::playLevelUpAnimation()
@@ -28,6 +28,7 @@ LevelOptions RoundWonStage::levelUp(LevelOptions levelOptions)
         levelOptions.sequenceLength++;
         levelOptions.roundsToPlay = 5;
         playLevelUpAnimation();
+        delay(1000);
     }
 
     return levelOptions;
