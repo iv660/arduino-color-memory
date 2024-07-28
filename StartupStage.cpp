@@ -9,9 +9,16 @@ void StartupStage::waitForKeyPress() {
 
   pinMode(KEY1, INPUT);
   
-  while (digitalRead(KEY1) == LOW);
+  while (digitalRead(KEY1) == LOW) {
+    shuffleRandomGenerator();
+  }
 
   return;
+}
+
+void StartupStage::shuffleRandomGenerator()
+{
+  random(1, 5);
 }
 
 StageInterface* StartupStage::run() 

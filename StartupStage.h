@@ -10,6 +10,7 @@ class StartupStage: public BaseStage
 
   private:
     void waitForKeyPress();
+    void shuffleRandomGenerator();
 
   public: 
     StageInterface* run();
