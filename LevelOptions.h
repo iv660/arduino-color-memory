@@ -4,6 +4,7 @@
 struct LevelOptions
 {
     int sequenceLength = 1;
+    int roundsToPlay = 5;
 };
 
 #endif // LEVELOPTIONS_H

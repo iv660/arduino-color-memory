@@ -4,6 +4,7 @@
 #include "BaseStage.h"
 #include "StageInterface.h"
 #include "LevelOptions.h"
+#include "SignalsDisplay.h"
 
 class RoundWonStage: public BaseStage
 {
@@ -11,8 +12,11 @@ class RoundWonStage: public BaseStage
     
     private:
         void playRoundWonAnimation();
+        void playLevelUpAnimation();
         void waitForKey();
+
         LevelOptions levelOptions;
+        SignalsDisplay signals;
 
         LevelOptions levelUp(LevelOptions levelOptions);
     public:
