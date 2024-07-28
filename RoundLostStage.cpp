@@ -16,10 +16,26 @@ void RoundLostStage::waitForKey()
     while(key.isUp());
 }
 
+LevelOptions RoundLostStage::resetLevel(LevelOptions levelOptions)
+{
+    levelOptions.sequenceLength = 1;
+
+    return levelOptions;
+}
+
 StageInterface *RoundLostStage::run()
 {
     playRoundLostAnimation();
     waitForKey();
 
-    return stagesLocator->playRoundStage;
+    return stagesLocator->playRoundStage
+        ->setLevelOptions(
+            resetLevel(levelOptions)
+        );
+}
+
+RoundLostStage * RoundLostStage::setLevelOptions(LevelOptions levelOptions)
+{
+    this->levelOptions = levelOptions;
+    return this;
 }
