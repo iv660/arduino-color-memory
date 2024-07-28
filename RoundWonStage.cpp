@@ -16,10 +16,25 @@ void RoundWonStage::waitForKey()
     while(key.isUp());
 }
 
+LevelOptions RoundWonStage::levelUp(LevelOptions levelOptions)
+{
+    levelOptions.sequenceLength++;
+
+    return levelOptions;
+}
+
 StageInterface *RoundWonStage::run()
 {
     playRoundWonAnimation();
     waitForKey();
 
-    return stagesLocator->playRoundStage;
+    return stagesLocator->playRoundStage
+        ->setLevelOptions(levelUp(levelOptions));
+}
+
+RoundWonStage *RoundWonStage::setLevelOptions(LevelOptions levelOptions)
+{
+    this->levelOptions = levelOptions;
+
+    return this;
 }

@@ -5,6 +5,11 @@
 #include "Light.h"
 #include "SignalsDisplay.h"
 
+int PlayRoundStage::getSequenceLenght()
+{
+    return levelOptions.sequenceLength;
+}
+
 void PlayRoundStage::waitFor(int pauseMillis)
 {
     delay(pauseMillis);
@@ -19,9 +24,16 @@ StageInterface* PlayRoundStage::run()
     return getNextStage(inputIsCorrect);
 }
 
+PlayRoundStage * PlayRoundStage::setLevelOptions(LevelOptions levelOptions)
+{
+    this->levelOptions = levelOptions;
+
+    return this;
+}
+
 void PlayRoundStage::playSequence()
 {
-    sequence.generate(sequenceLength, minValue, maxValue);
+    sequence.generate(getSequenceLenght(), minValue, maxValue);
     while (sequence.hasNext()) {
         sequenceDisplay.show(sequence.next(), duration);
         waitFor(pause);
@@ -36,7 +48,7 @@ void PlayRoundStage::playReadyForInputAnimation()
 
 bool PlayRoundStage::checkInputAgainstSequence()
 {
-    for (int index = 1; index <= sequenceLength; index++) {
+    for (int index = 1; index <= getSequenceLenght(); index++) {
         int key = keypad.getInput();
         if (false == sequence.checkInput(index, key)) {
             return false;
@@ -49,7 +61,8 @@ bool PlayRoundStage::checkInputAgainstSequence()
 StageInterface* PlayRoundStage::getNextStage(bool inputIsCorrect)
 {
     if (inputIsCorrect) {
-        return stagesLocator->roundWonStage;
+        return stagesLocator->roundWonStage
+            ->setLevelOptions(levelOptions);
     }
     return stagesLocator->roundLostStage;
 }
