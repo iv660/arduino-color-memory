@@ -2,6 +2,7 @@
 #include "RoundLostStage.h"
 #include "StagesLocator.h"
 #include "SignalsDisplay.h"
+#include "GameState.h"
 
 void RoundLostStage::playRoundLostAnimation()
 {
@@ -16,11 +17,11 @@ void RoundLostStage::waitForKey()
     while(key.isUp());
 }
 
-LevelOptions RoundLostStage::resetLevel(LevelOptions levelOptions)
+GameState RoundLostStage::resetLevel(GameState gameState)
 {
-    levelOptions.sequenceLength = 1;
+    gameState.levelOptions.sequenceLength = 1;
 
-    return levelOptions;
+    return gameState;
 }
 
 StageInterface *RoundLostStage::run()
@@ -29,13 +30,13 @@ StageInterface *RoundLostStage::run()
     waitForKey();
 
     return stagesLocator->playRoundStage
-        ->setLevelOptions(
-            resetLevel(levelOptions)
+        ->setGameState(
+            resetLevel(gameState)
         );
 }
 
-RoundLostStage * RoundLostStage::setLevelOptions(LevelOptions levelOptions)
+RoundLostStage * RoundLostStage::setGameState(GameState gameState)
 {
-    this->levelOptions = levelOptions;
+    this->gameState = gameState;
     return this;
 }

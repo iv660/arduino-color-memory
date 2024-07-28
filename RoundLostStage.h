@@ -3,7 +3,7 @@
 
 #include "BaseStage.h"
 #include "StageInterface.h"
-#include "LevelOptions.h"
+#include "GameState.h"
 
 class RoundLostStage: public BaseStage
 {
@@ -12,12 +12,12 @@ class RoundLostStage: public BaseStage
     private:
         void playRoundLostAnimation();
         void waitForKey();
-        LevelOptions levelOptions;
-        LevelOptions resetLevel(LevelOptions levelOptions);
+        GameState gameState;
+        GameState resetLevel(GameState gameState);
 
     public:
         StageInterface* run();
-        RoundLostStage* setLevelOptions(LevelOptions levelOptions);
+        RoundLostStage* setGameState(GameState gameState);
 };
 
 #endif // ROUNDLOSTSTAGE_H

@@ -7,7 +7,8 @@
 
 int PlayRoundStage::getSequenceLenght()
 {
-    return levelOptions.sequenceLength;
+    return gameState.levelOptions
+        .sequenceLength;
 }
 
 void PlayRoundStage::waitFor(int pauseMillis)
@@ -24,9 +25,9 @@ StageInterface* PlayRoundStage::run()
     return getNextStage(inputIsCorrect);
 }
 
-PlayRoundStage * PlayRoundStage::setLevelOptions(LevelOptions levelOptions)
+PlayRoundStage * PlayRoundStage::setGameState(GameState gameState)
 {
-    this->levelOptions = levelOptions;
+    this->gameState = gameState;
 
     return this;
 }
@@ -62,7 +63,8 @@ StageInterface* PlayRoundStage::getNextStage(bool inputIsCorrect)
 {
     if (inputIsCorrect) {
         return stagesLocator->roundWonStage
-            ->setLevelOptions(levelOptions);
+            ->setGameState(gameState);
     }
-    return stagesLocator->roundLostStage;
+    return stagesLocator->roundLostStage
+        ->setGameState(gameState);
 }

@@ -5,6 +5,7 @@
 #include "StageInterface.h"
 #include "LevelOptions.h"
 #include "SignalsDisplay.h"
+#include "GameState.h"
 
 class RoundWonStage: public BaseStage
 {
@@ -15,13 +16,13 @@ class RoundWonStage: public BaseStage
         void playLevelUpAnimation();
         void waitForKey();
 
-        LevelOptions levelOptions;
+        GameState gameState;
         SignalsDisplay signals;
 
-        LevelOptions levelUp(LevelOptions levelOptions);
+        GameState levelUp(GameState gameState);
     public:
         StageInterface* run();
-        RoundWonStage* setLevelOptions(LevelOptions levelOptions);
+        RoundWonStage* setGameState(GameState gameState);
 };
 
 #endif // ROUNDWONSTAGE_H

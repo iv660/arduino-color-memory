@@ -2,6 +2,7 @@
 #include "RoundWonStage.h"
 #include "StagesLocator.h"
 #include "SignalsDisplay.h"
+#include "GameState.h"
 
 void RoundWonStage::playRoundWonAnimation()
 {
@@ -20,18 +21,18 @@ void RoundWonStage::waitForKey()
     while(key.isUp());
 }
 
-LevelOptions RoundWonStage::levelUp(LevelOptions levelOptions)
+GameState RoundWonStage::levelUp(GameState gameState)
 {
-    levelOptions.roundsToPlay--;
+    gameState.roundsLeft--;
     
-    if (levelOptions.roundsToPlay < 1) {
-        levelOptions.sequenceLength++;
-        levelOptions.roundsToPlay = 5;
+    if (gameState.roundsLeft < 1) {
+        gameState.levelOptions.sequenceLength++;
+        gameState.roundsLeft = gameState.levelOptions.roundsToPlay;
         playLevelUpAnimation();
         delay(1000);
     }
 
-    return levelOptions;
+    return gameState;
 }
 
 StageInterface *RoundWonStage::run()
@@ -40,12 +41,12 @@ StageInterface *RoundWonStage::run()
     waitForKey();
 
     return stagesLocator->playRoundStage
-        ->setLevelOptions(levelUp(levelOptions));
+        ->setGameState(levelUp(gameState));
 }
 
-RoundWonStage *RoundWonStage::setLevelOptions(LevelOptions levelOptions)
+RoundWonStage *RoundWonStage::setGameState(GameState gameState)
 {
-    this->levelOptions = levelOptions;
+    this->gameState = gameState;
 
     return this;
 }

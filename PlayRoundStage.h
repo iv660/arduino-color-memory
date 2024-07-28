@@ -8,6 +8,7 @@
 #include "Keypad.h"
 #include "SignalsDisplay.h"
 #include "LevelOptions.h"
+#include "GameState.h"
 
 class PlayRoundStage: public BaseStage
 {
@@ -20,7 +21,7 @@ class PlayRoundStage: public BaseStage
     Keypad keypad;
 
     // Gameplay level options
-    LevelOptions levelOptions;
+    GameState gameState;
     int duration = 700;
     int pause = 300;
     int sequenceLength = 1;
@@ -40,7 +41,7 @@ class PlayRoundStage: public BaseStage
 
   public:
     StageInterface* run();
-    PlayRoundStage* setLevelOptions(LevelOptions levelOptions);
+    PlayRoundStage* setGameState(GameState gameState);
 };
 
 #endif // !PLAYROUNDSTAGE_H
