@@ -6,7 +6,6 @@
 GameState ExtendSequenceLevelUp::updateState(GameState gameState)
 {
     gameState.levelOptions.sequenceLength++;
-    gameState.roundsLeft = gameState.levelOptions.roundsToPlay;
 
     return gameState;
 }

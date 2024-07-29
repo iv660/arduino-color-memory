@@ -4,6 +4,7 @@
 #include "BaseStage.h"
 #include "LevelUpInterface.h"
 #include "ExtendSequenceLevelUp.h"
+#include "AddLightsLevelUp.h"
 
 class StageInterface;
 
@@ -12,11 +13,12 @@ class LevelUpStage : public BaseStage
     private: 
         GameState gameState;
 
-        LevelUpInterface* levelUps[1] = {
-            new ExtendSequenceLevelUp()
+        LevelUpInterface* levelUps[2] = {
+            new ExtendSequenceLevelUp(),
+            new AddLightsLevelUp(),
         };
         int levelUpIndex = 0;
-        int levelUpsCount = 1;
+        int levelUpsCount = 2;
 
         GameState levelUp(GameState gameState);
         void playLevelUpAnimation();
@@ -27,6 +29,7 @@ class LevelUpStage : public BaseStage
 
         StageInterface* run();
         LevelUpStage* setGameState(GameState gameState);
+        LevelUpStage* reset();
 };
 
 #endif // LEVELUPSTAGE_H

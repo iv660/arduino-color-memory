@@ -17,6 +17,13 @@ LevelUpStage* LevelUpStage::setGameState(GameState gameState)
     return this;
 }
 
+LevelUpStage *LevelUpStage::reset()
+{
+    levelUpIndex = 0;
+    
+    return this;
+}
+
 void LevelUpStage::playLevelUpAnimation() 
 {
     SignalsDisplay signals;
@@ -25,7 +32,10 @@ void LevelUpStage::playLevelUpAnimation()
 
 GameState LevelUpStage::levelUp(GameState gameState)
 {
-    return getLevelUpFor(gameState)->updateState(gameState);
+    GameState updatedGameState = getLevelUpFor(gameState)->updateState(gameState);
+    updatedGameState.roundsLeft = updatedGameState.levelOptions.roundsToPlay;
+
+    return updatedGameState;
 }
 
 LevelUpInterface *LevelUpStage::getLevelUpFor(GameState gameState)
@@ -41,11 +51,13 @@ LevelUpInterface *LevelUpStage::getLevelUpFor(GameState gameState)
 
 int LevelUpStage::nextLevelUpIndex()
 {
+    int nextIndex = levelUpIndex;
+    
     if (levelUpIndex < levelUpsCount - 1) {
         levelUpIndex++;
     } else {
         levelUpIndex = 0;
     }
 
-    return levelUpIndex;
+    return nextIndex;
 }

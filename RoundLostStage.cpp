@@ -20,6 +20,11 @@ void RoundLostStage::waitForKey()
 GameState RoundLostStage::resetLevel(GameState gameState)
 {
     gameState.levelOptions.sequenceLength = 1;
+    gameState.levelOptions.maxValue = 2;
+    gameState.levelOptions.roundsToPlay = 5;
+    gameState.roundsLeft = gameState.levelOptions.roundsToPlay;
+
+    stagesLocator->levelUpStage->reset();
 
     return gameState;
 }
