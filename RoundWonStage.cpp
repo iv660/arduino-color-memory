@@ -3,14 +3,12 @@
 #include "StagesLocator.h"
 #include "SignalsDisplay.h"
 #include "GameState.h"
-#include "ExpandSequenceLevelUp.h"
+#include "ExtendSequenceLevelUp.h"
 
 void RoundWonStage::playRoundWonAnimation()
 {
     signals.green.blink(1500, 1);
 }
-
-
 
 void RoundWonStage::waitForKey()
 {
@@ -19,10 +17,9 @@ void RoundWonStage::waitForKey()
     while(key.isUp());
 }
 
-
 GameState RoundWonStage::levelUp(GameState gameState)
 {
-    return ExpandSequenceLevelUp().updateState(gameState);
+    return ExtendSequenceLevelUp().updateState(gameState);
 }
 
 StageInterface *RoundWonStage::run()

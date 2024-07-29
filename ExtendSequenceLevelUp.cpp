@@ -1,9 +1,9 @@
 #include <Arduino.h>
-#include "ExpandSequenceLevelUp.h"
+#include "ExtendSequenceLevelUp.h"
 #include "SignalsDisplay.h"
 
 
-GameState ExpandSequenceLevelUp::updateState(GameState gameState)
+GameState ExtendSequenceLevelUp::updateState(GameState gameState)
 {
     gameState.roundsLeft--;
     
@@ -17,7 +17,7 @@ GameState ExpandSequenceLevelUp::updateState(GameState gameState)
     return gameState;
 }
 
-void ExpandSequenceLevelUp::playLevelUpAnimation()
+void ExtendSequenceLevelUp::playLevelUpAnimation()
 {
     SignalsDisplay().all.blink(300, 3);
 }

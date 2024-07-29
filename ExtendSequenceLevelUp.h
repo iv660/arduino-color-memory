@@ -3,7 +3,7 @@
 
 #include "GameState.h"
 
-class ExpandSequenceLevelUp
+class ExtendSequenceLevelUp
 {
     private:
         void playLevelUpAnimation();
