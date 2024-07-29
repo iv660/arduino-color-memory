@@ -4,9 +4,11 @@
 #include "GameState.h"
 #include "LevelUpInterface.h"
 
-class ExtendSequenceLevelUp : public LevelUpInterface {
+class ExtendSequenceLevelUp : public LevelUpInterface 
+{
     public:
         GameState updateState(GameState gameState) override;
+        bool canHandle(GameState gameState) override;
 };
 
 #endif // EXPANDSEQUENCELEVELUP_H

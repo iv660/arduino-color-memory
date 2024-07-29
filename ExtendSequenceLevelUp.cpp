@@ -10,3 +10,8 @@ GameState ExtendSequenceLevelUp::updateState(GameState gameState)
 
     return gameState;
 }
+
+bool ExtendSequenceLevelUp::canHandle(GameState gameState)
+{
+    return true;
+}

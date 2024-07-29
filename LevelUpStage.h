@@ -18,10 +18,10 @@ class LevelUpStage : public BaseStage
         int levelUpIndex = 0;
         int levelUpsCount = 1;
 
-        void playLevelUpAnimation();
         GameState levelUp(GameState gameState);
-        LevelUpInterface* getLevelUpFor(GameState gameState);
+        void playLevelUpAnimation();
         int nextLevelUpIndex();
+        LevelUpInterface* getLevelUpFor(GameState gameState);
     public:
         using BaseStage::BaseStage;
 

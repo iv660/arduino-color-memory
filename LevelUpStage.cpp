@@ -30,7 +30,13 @@ GameState LevelUpStage::levelUp(GameState gameState)
 
 LevelUpInterface *LevelUpStage::getLevelUpFor(GameState gameState)
 {
-    return levelUps[nextLevelUpIndex()];
+    LevelUpInterface* selectedLevelUp;
+    
+    do {
+        selectedLevelUp = levelUps[nextLevelUpIndex()];
+    } while (!selectedLevelUp->canHandle(gameState));
+
+    return selectedLevelUp;
 }
 
 int LevelUpStage::nextLevelUpIndex()
@@ -40,6 +46,6 @@ int LevelUpStage::nextLevelUpIndex()
     } else {
         levelUpIndex = 0;
     }
-    
+
     return levelUpIndex;
 }
