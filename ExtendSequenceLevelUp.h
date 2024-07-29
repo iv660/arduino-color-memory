@@ -2,13 +2,13 @@
 #define EXPANDSEQUENCELEVELUP_H
 
 #include "GameState.h"
+#include "LevelUpInterface.h"
 
-class ExtendSequenceLevelUp
-{
+class ExtendSequenceLevelUp : public LevelUpInterface {
     private:
         void playLevelUpAnimation();
     public:
-        GameState updateState(GameState gameState);
+        GameState updateState(GameState gameState) override;
 };
 
 #endif // EXPANDSEQUENCELEVELUP_H
