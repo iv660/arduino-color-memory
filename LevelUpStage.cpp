@@ -25,5 +25,21 @@ void LevelUpStage::playLevelUpAnimation()
 
 GameState LevelUpStage::levelUp(GameState gameState)
 {
-    return ExtendSequenceLevelUp().updateState(gameState);
+    return getLevelUpFor(gameState)->updateState(gameState);
+}
+
+LevelUpInterface *LevelUpStage::getLevelUpFor(GameState gameState)
+{
+    return levelUps[nextLevelUpIndex()];
+}
+
+int LevelUpStage::nextLevelUpIndex()
+{
+    if (levelUpIndex < levelUpsCount - 1) {
+        levelUpIndex++;
+    } else {
+        levelUpIndex = 0;
+    }
+    
+    return levelUpIndex;
 }
