@@ -5,8 +5,6 @@
 #include "LevelUpInterface.h"
 
 class ExtendSequenceLevelUp : public LevelUpInterface {
-    private:
-        void playLevelUpAnimation();
     public:
         GameState updateState(GameState gameState) override;
 };

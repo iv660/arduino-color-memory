@@ -4,8 +4,8 @@
 #include "GameState.h"
 
 class LevelUpInterface {
-public:
-    virtual GameState updateState(GameState gameState) = 0;
+    public:
+        virtual GameState updateState(GameState gameState) = 0;
 };
 
 #endif // LEVELUPINTERFACE_H

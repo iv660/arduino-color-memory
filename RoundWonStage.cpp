@@ -17,18 +17,34 @@ void RoundWonStage::waitForKey()
     while(key.isUp());
 }
 
-GameState RoundWonStage::levelUp(GameState gameState)
+bool RoundWonStage::isReadyForNextLevel()
 {
-    return ExtendSequenceLevelUp().updateState(gameState);
+    return gameState.roundsLeft < 1;
+}
+
+StageInterface *RoundWonStage::getNextStage()
+{
+    if (isReadyForNextLevel()) {
+        return stagesLocator->levelUpStage
+            ->setGameState(gameState);
+    }
+
+    return stagesLocator->playRoundStage
+        ->setGameState(gameState);
+}
+
+void RoundWonStage::nextRound()
+{
+    gameState.roundsLeft--;
 }
 
 StageInterface *RoundWonStage::run()
 {
+    nextRound();
     playRoundWonAnimation();
     waitForKey();
 
-    return stagesLocator->playRoundStage
-        ->setGameState(levelUp(gameState));
+    return getNextStage();
 }
 
 RoundWonStage *RoundWonStage::setGameState(GameState gameState)
