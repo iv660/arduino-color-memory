@@ -1,10 +1,13 @@
 #ifndef LEVELUPSTAGE_H
 #define LEVELUPSTAGE_H
 
+#include "const.h"
+
 #include "BaseStage.h"
 #include "LevelUpInterface.h"
 #include "ExtendSequenceLevelUp.h"
 #include "AddLightsLevelUp.h"
+#include "DashboardDisplay.h"
 
 class StageInterface;
 
@@ -12,6 +15,8 @@ class LevelUpStage : public BaseStage
 {
     private: 
         GameState gameState;
+        DashboardDisplay dashboard = 
+            DashboardDisplay(DASHBOARD_DIO, DASHBOARD_CLK);
 
         LevelUpInterface* levelUps[2] = {
             new ExtendSequenceLevelUp(),
@@ -21,6 +26,7 @@ class LevelUpStage : public BaseStage
         int levelUpsCount = 2;
 
         GameState levelUp(GameState gameState);
+        void showLevelTransition(int from, int to);
         void playLevelUpAnimation();
         int nextLevelUpIndex();
         LevelUpInterface* getLevelUpFor(GameState gameState);

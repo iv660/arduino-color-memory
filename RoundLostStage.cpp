@@ -23,6 +23,7 @@ GameState RoundLostStage::resetLevel(GameState gameState)
     gameState.levelOptions.maxValue = 2;
     gameState.levelOptions.roundsToPlay = 5;
     gameState.roundsLeft = gameState.levelOptions.roundsToPlay;
+    gameState.level = 1;
 
     stagesLocator->levelUpStage->reset();
 

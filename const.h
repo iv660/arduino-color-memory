@@ -1,6 +1,8 @@
 #if !defined(CONST_H)
 #define CONST_H
 
+#include <Arduino.h>
+
 #define KEY1 PIN2
 #define KEY2 PIN4
 #define KEY3 PIN6

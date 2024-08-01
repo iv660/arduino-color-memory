@@ -4,7 +4,6 @@
 
 void DashboardDisplay::showReadout(char * caption, int value)
 {
-    Disp1637Colon display(dio, clk, false);
     SegAnimation<3> animation(&display, 1);
     animation.setEffect(SegEffect::TwistFill, 500);
 
@@ -23,8 +22,6 @@ void DashboardDisplay::showReadout(char * caption, int value)
 
 void DashboardDisplay::showInstantReadout(char * caption, int value)
 {
-    Disp1637Colon display(dio, clk, false);
-
     display.setCursor(0);
     display.clear();
     display.print(caption);
@@ -33,15 +30,30 @@ void DashboardDisplay::showInstantReadout(char * caption, int value)
     display.update();
 }
 
-DashboardDisplay::DashboardDisplay(uint8_t dio, uint8_t clk)
+void DashboardDisplay::showReadoutTransition(char * caption, 
+    int fromValue, int toValue)
 {
-    this->dio = dio;
-    this->clk = clk;
+    SegAnimation<3> animation(&display, 1);
+    animation.setEffect(SegEffect::TwistFill, 500);
+
+    showInstantReadout(caption, fromValue);
+    display.delay(500);
+
+    animation.start();
+    animation.setCursorEnd(sseg::intLen(toValue) - 1);
+    animation.print(toValue);
+    animation.waitEnd();
 }
 
 DashboardDisplay *DashboardDisplay::showLevel(int level)
 {
     showReadout("Y", level);
+    return this;
+}
+
+DashboardDisplay * DashboardDisplay::showLevelTransition(int from, int to)
+{
+    showReadoutTransition("Y", from, to);
     return this;
 }
 
@@ -59,7 +71,8 @@ DashboardDisplay * DashboardDisplay::showMovesLeft(int movesLeft)
 
 DashboardDisplay *DashboardDisplay::clear()
 {
-    Disp1637Colon(dio, clk, false).clear();
+    display.clear();
+    display.update();
 
     return this;
 }
