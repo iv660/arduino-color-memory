@@ -8,8 +8,6 @@ void DashboardDisplay::showReadout(char * caption, int value)
     SegAnimation<3> animation(&display, 1);
     animation.setEffect(SegEffect::TwistFill, 500);
 
-    clear();
-
     display.setCursor(0);
     display.clear();
 
@@ -21,6 +19,18 @@ void DashboardDisplay::showReadout(char * caption, int value)
     animation.setCursorEnd(sseg::intLen(value) - 1);
     animation.print(value);
     animation.waitEnd();
+}
+
+void DashboardDisplay::showInstantReadout(char * caption, int value)
+{
+    Disp1637Colon display(dio, clk, false);
+
+    display.setCursor(0);
+    display.clear();
+    display.print(caption);
+    display.setCursorEnd(sseg::intLen(value) - 1);
+    display.print(value);
+    display.update();
 }
 
 DashboardDisplay::DashboardDisplay(uint8_t dio, uint8_t clk)
@@ -38,6 +48,12 @@ DashboardDisplay *DashboardDisplay::showLevel(int level)
 DashboardDisplay *DashboardDisplay::showHighScore(int score)
 {
     showReadout("P", score);
+    return this;
+}
+
+DashboardDisplay * DashboardDisplay::showMovesLeft(int movesLeft)
+{
+    showInstantReadout("O", movesLeft);
     return this;
 }
 

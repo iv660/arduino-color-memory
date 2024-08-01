@@ -1,6 +1,7 @@
 #ifndef PLAYROUNDSTAGE_H
 #define PLAYROUNDSTAGE_H
 
+#include "const.h"
 #include "BaseStage.h"
 #include "StageInterface.h"
 #include "Sequence.h"
@@ -9,6 +10,7 @@
 #include "SignalsDisplay.h"
 #include "LevelOptions.h"
 #include "GameState.h"
+#include "DashboardDisplay.h"
 
 class PlayRoundStage: public BaseStage
 {
@@ -19,6 +21,7 @@ class PlayRoundStage: public BaseStage
     SequenceDisplay sequenceDisplay;
     SignalsDisplay signalsDisplay;
     Keypad keypad;
+    DashboardDisplay dashboard = DashboardDisplay(DASHBOARD_DIO, DASHBOARD_CLK);
 
     // Gameplay level options
     GameState gameState;
