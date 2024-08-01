@@ -3,15 +3,11 @@
 #include "StagesLocator.h"
 #include "SignalsDisplay.h"
 #include "GameState.h"
+#include "ExtendSequenceLevelUp.h"
 
 void RoundWonStage::playRoundWonAnimation()
 {
     signals.green.blink(1500, 1);
-}
-
-void RoundWonStage::playLevelUpAnimation()
-{
-    signals.all.blink(300, 3);
 }
 
 void RoundWonStage::waitForKey()
@@ -21,27 +17,34 @@ void RoundWonStage::waitForKey()
     while(key.isUp());
 }
 
-GameState RoundWonStage::levelUp(GameState gameState)
+bool RoundWonStage::isReadyForNextLevel()
 {
-    gameState.roundsLeft--;
-    
-    if (gameState.roundsLeft < 1) {
-        gameState.levelOptions.sequenceLength++;
-        gameState.roundsLeft = gameState.levelOptions.roundsToPlay;
-        playLevelUpAnimation();
-        delay(1000);
+    return gameState.roundsLeft < 1;
+}
+
+StageInterface *RoundWonStage::getNextStage()
+{
+    if (isReadyForNextLevel()) {
+        return stagesLocator->levelUpStage
+            ->setGameState(gameState);
     }
 
-    return gameState;
+    return stagesLocator->playRoundStage
+        ->setGameState(gameState);
+}
+
+void RoundWonStage::nextRound()
+{
+    gameState.roundsLeft--;
 }
 
 StageInterface *RoundWonStage::run()
 {
+    nextRound();
     playRoundWonAnimation();
     waitForKey();
 
-    return stagesLocator->playRoundStage
-        ->setGameState(levelUp(gameState));
+    return getNextStage();
 }
 
 RoundWonStage *RoundWonStage::setGameState(GameState gameState)

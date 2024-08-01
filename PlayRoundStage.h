@@ -26,7 +26,6 @@ class PlayRoundStage: public BaseStage
     int pause = 300;
     int sequenceLength = 1;
     int minValue = 1;
-    int maxValue = 3;
     int getSequenceLenght();
 
     // Actions
@@ -34,7 +33,6 @@ class PlayRoundStage: public BaseStage
     void playSequence();
     void playReadyForInputAnimation();
     bool checkInputAgainstSequence();
-
 
     // Factory methods
     StageInterface* getNextStage(bool inputIsCorrect);

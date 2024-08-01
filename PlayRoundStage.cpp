@@ -7,6 +7,8 @@
 
 int PlayRoundStage::getSequenceLenght()
 {
+    Serial.print("Sequence length: ");
+    Serial.println(gameState.levelOptions.sequenceLength);
     return gameState.levelOptions
         .sequenceLength;
 }
@@ -34,7 +36,8 @@ PlayRoundStage * PlayRoundStage::setGameState(GameState gameState)
 
 void PlayRoundStage::playSequence()
 {
-    sequence.generate(getSequenceLenght(), minValue, maxValue);
+    sequence.generate(getSequenceLenght(), minValue, 
+        gameState.levelOptions.maxValue);
     while (sequence.hasNext()) {
         sequenceDisplay.show(sequence.next(), duration);
         waitFor(pause);
@@ -49,9 +52,14 @@ void PlayRoundStage::playReadyForInputAnimation()
 
 bool PlayRoundStage::checkInputAgainstSequence()
 {
+    Serial.println("checkInputAgainstSequence() >>>");
     for (int index = 1; index <= getSequenceLenght(); index++) {
+        Serial.println("Inside loop >>>");
         int key = keypad.getInput();
+        Serial.print("Got key input: ");
+        Serial.println(key);
         if (false == sequence.checkInput(index, key)) {
+            Serial.println("Input is wrong!");
             return false;
         }
     }
