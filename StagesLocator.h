@@ -6,6 +6,7 @@
 #include "RoundWonStage.h"
 #include "RoundLostStage.h"
 #include "ExperimentStage.h"
+#include "LevelUpStage.h"
 
 class StagesLocator 
 {
@@ -14,6 +15,8 @@ class StagesLocator
     PlayRoundStage* playRoundStage = new PlayRoundStage(this);
     RoundWonStage* roundWonStage = new RoundWonStage(this);
     RoundLostStage* roundLostStage = new RoundLostStage(this);
+    LevelUpStage* levelUpStage = new LevelUpStage(this);
+
     ExperimentStage* experimentStage = new ExperimentStage(this);
 };
 

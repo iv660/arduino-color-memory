@@ -13,13 +13,14 @@ class RoundWonStage: public BaseStage
     
     private:
         void playRoundWonAnimation();
-        void playLevelUpAnimation();
         void waitForKey();
+        bool isReadyForNextLevel();
+        void nextRound();
+
+        StageInterface* getNextStage();
 
         GameState gameState;
         SignalsDisplay signals;
-
-        GameState levelUp(GameState gameState);
     public:
         StageInterface* run();
         RoundWonStage* setGameState(GameState gameState);
