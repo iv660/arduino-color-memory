@@ -2,10 +2,18 @@
 #include "const.h"
 #include "PlayRoundStage.h"
 #include "StageInterface.h"
+#include "ServiceLocator.h"
 #include "StagesLocator.h"
 #include "Light.h"
 #include "SignalsDisplay.h"
 #include "DashboardDisplay.h"
+#include "BaseStage.h"
+
+PlayRoundStage::PlayRoundStage(StagesLocator* stagesLocator, ServiceLocator* serviceLocator): BaseStage(stagesLocator, serviceLocator) 
+{
+    // Serial.println("PlayRoundStage::PlayRoundStage()");
+    // dashboard = serviceLocator->getDashboard();
+}
 
 int PlayRoundStage::getSequenceLenght()
 {
@@ -52,17 +60,18 @@ void PlayRoundStage::playReadyForInputAnimation()
 
 bool PlayRoundStage::checkInputAgainstSequence()
 {
-    dashboard.clear();
+    DashboardDisplay* dashboard = serviceLocator->getDashboard();
+    dashboard->clear();
     for (int index = 1; index <= getSequenceLenght(); index++) {
-        dashboard.showMovesLeft(getSequenceLenght() - index + 1);
+        dashboard->showMovesLeft(getSequenceLenght() - index + 1);
         int key = keypad.getInput();
         if (false == sequence.checkInput(index, key)) {
-            dashboard.clear();
+            dashboard->clear();
             return false;
         }
     }
 
-    dashboard.clear();
+    dashboard->clear();
     
     return true;
 }
