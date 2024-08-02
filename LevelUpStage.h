@@ -16,12 +16,13 @@ class LevelUpStage : public BaseStage
     private: 
         GameState gameState;
         
-        LevelUpInterface* levelUps[2] = {
+        LevelUpInterface* levelUps[3] = {
             new ExtendSequenceLevelUp(),
             new AddLightsLevelUp(),
+            new ExtendSequenceLevelUp(),
         };
         int levelUpIndex = 0;
-        int levelUpsCount = 2;
+        int levelUpsCount = 3;
 
         GameState levelUp(GameState gameState);
         void showLevelTransition(int from, int to);

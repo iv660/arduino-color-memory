@@ -69,6 +69,12 @@ DashboardDisplay * DashboardDisplay::showMovesLeft(int movesLeft)
     return this;
 }
 
+DashboardDisplay *DashboardDisplay::showRoundsLeft(int roundsLeft)
+{
+    showInstantReadout("^", roundsLeft);
+    return this;
+}
+
 DashboardDisplay *DashboardDisplay::clear()
 {
     display.clear();

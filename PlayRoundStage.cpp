@@ -54,7 +54,6 @@ void PlayRoundStage::playReadyForInputAnimation()
 
 bool PlayRoundStage::checkInputAgainstSequence()
 {
-    // DashboardDisplay* dashboard = serviceLocator->getDashboard();
     dashboard->clear();
     for (int index = 1; index <= getSequenceLenght(); index++) {
         dashboard->showMovesLeft(getSequenceLenght() - index + 1);
@@ -79,3 +78,10 @@ StageInterface* PlayRoundStage::getNextStage(bool inputIsCorrect)
     return stagesLocator->roundLostStage
         ->setGameState(gameState);
 }
+
+void PlayRoundStage::showRoundsLeft()
+{
+    dashboard->showRoundsLeft(gameState.roundsLeft);
+    delay(1000);
+}
+

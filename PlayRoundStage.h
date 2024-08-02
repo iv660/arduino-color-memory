@@ -35,6 +35,7 @@ class PlayRoundStage: public BaseStage
     void playSequence();
     void playReadyForInputAnimation();
     bool checkInputAgainstSequence();
+    void showRoundsLeft();
 
     // Factory methods
     StageInterface* getNextStage(bool inputIsCorrect);
