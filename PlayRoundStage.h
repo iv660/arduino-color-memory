@@ -21,7 +21,7 @@ class PlayRoundStage: public BaseStage
     SequenceDisplay sequenceDisplay;
     SignalsDisplay signalsDisplay;
     Keypad keypad;
-    // DashboardDisplay* dashboard = nullptr;
+    DashboardDisplay* dashboard = nullptr;
 
     // Gameplay level options
     GameState gameState;

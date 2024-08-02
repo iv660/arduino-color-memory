@@ -9,10 +9,9 @@
 #include "DashboardDisplay.h"
 #include "BaseStage.h"
 
-PlayRoundStage::PlayRoundStage(StagesLocator* stagesLocator, ServiceLocator* serviceLocator): BaseStage(stagesLocator, serviceLocator) 
+PlayRoundStage::PlayRoundStage(StagesLocator* stagesLocator, ServiceLocator* serviceLocator): BaseStage::BaseStage(stagesLocator, serviceLocator)
 {
-    // Serial.println("PlayRoundStage::PlayRoundStage()");
-    // dashboard = serviceLocator->getDashboard();
+    dashboard = serviceLocator->getDashboard();
 }
 
 int PlayRoundStage::getSequenceLenght()
@@ -60,7 +59,7 @@ void PlayRoundStage::playReadyForInputAnimation()
 
 bool PlayRoundStage::checkInputAgainstSequence()
 {
-    DashboardDisplay* dashboard = serviceLocator->getDashboard();
+    // DashboardDisplay* dashboard = serviceLocator->getDashboard();
     dashboard->clear();
     for (int index = 1; index <= getSequenceLenght(); index++) {
         dashboard->showMovesLeft(getSequenceLenght() - index + 1);
