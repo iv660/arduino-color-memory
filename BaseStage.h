@@ -11,6 +11,8 @@ class BaseStage: public StageInterface
   protected:
     StagesLocator* stagesLocator;
     ServiceLocator* serviceLocator;
+    
+    DashboardDisplay* dashboard = nullptr;
   public: 
     BaseStage(StagesLocator* stagesLocator, ServiceLocator* serviceLocator);
 };

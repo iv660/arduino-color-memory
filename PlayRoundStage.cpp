@@ -9,11 +9,6 @@
 #include "DashboardDisplay.h"
 #include "BaseStage.h"
 
-PlayRoundStage::PlayRoundStage(StagesLocator* stagesLocator, ServiceLocator* serviceLocator): BaseStage::BaseStage(stagesLocator, serviceLocator)
-{
-    dashboard = serviceLocator->getDashboard();
-}
-
 int PlayRoundStage::getSequenceLenght()
 {
     return gameState.levelOptions

@@ -3,4 +3,6 @@
 
 BaseStage::BaseStage(
     StagesLocator* stagesLocator, ServiceLocator* serviceLocator): 
-    serviceLocator(serviceLocator), stagesLocator(stagesLocator) {}
+    serviceLocator(serviceLocator), stagesLocator(stagesLocator) {
+        dashboard = serviceLocator->getDashboard();
+    }

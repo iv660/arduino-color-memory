@@ -9,7 +9,7 @@ StageInterface *LevelUpStage::run()
     showLevelTransition(gameState.level, gameState.level + 1);
     gameState.level++;
     delay(1500);
-    dashboard.clear();
+    dashboard->clear();
 
     return stagesLocator->playRoundStage
         ->setGameState(levelUp(gameState));
@@ -44,7 +44,7 @@ GameState LevelUpStage::levelUp(GameState gameState)
 
 void LevelUpStage::showLevelTransition(int from, int to)
 {
-    dashboard.showLevelTransition(from, to);
+    dashboard->showLevelTransition(from, to);
 }
 
 LevelUpInterface *LevelUpStage::getLevelUpFor(GameState gameState)

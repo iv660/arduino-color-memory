@@ -15,9 +15,7 @@ class LevelUpStage : public BaseStage
 {
     private: 
         GameState gameState;
-        DashboardDisplay dashboard = 
-            DashboardDisplay(DASHBOARD_DIO, DASHBOARD_CLK);
-
+        
         LevelUpInterface* levelUps[2] = {
             new ExtendSequenceLevelUp(),
             new AddLightsLevelUp(),

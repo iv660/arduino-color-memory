@@ -21,7 +21,6 @@ class PlayRoundStage: public BaseStage
     SequenceDisplay sequenceDisplay;
     SignalsDisplay signalsDisplay;
     Keypad keypad;
-    DashboardDisplay* dashboard = nullptr;
 
     // Gameplay level options
     GameState gameState;
@@ -41,7 +40,6 @@ class PlayRoundStage: public BaseStage
     StageInterface* getNextStage(bool inputIsCorrect);
 
   public:
-    PlayRoundStage(StagesLocator* stagesLocator, ServiceLocator* serviceLocator);
     StageInterface* run();
     PlayRoundStage* setGameState(GameState gameState);
 };
