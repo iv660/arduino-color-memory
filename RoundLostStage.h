@@ -13,7 +13,6 @@ class RoundLostStage: public BaseStage
         void playRoundLostAnimation();
         void waitForKey();
         GameState gameState;
-        GameState resetLevel(GameState gameState);
 
     public:
         StageInterface* run();

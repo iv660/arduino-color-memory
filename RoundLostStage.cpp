@@ -17,28 +17,13 @@ void RoundLostStage::waitForKey()
     while(key.isUp());
 }
 
-GameState RoundLostStage::resetLevel(GameState gameState)
-{
-    gameState.levelOptions.sequenceLength = 1;
-    gameState.levelOptions.maxValue = 2;
-    gameState.levelOptions.roundsToPlay = 5;
-    gameState.roundsLeft = gameState.levelOptions.roundsToPlay;
-    gameState.level = 1;
-
-    stagesLocator->levelUpStage->reset();
-
-    return gameState;
-}
-
 StageInterface *RoundLostStage::run()
 {
     playRoundLostAnimation();
     waitForKey();
 
-    return stagesLocator->playRoundStage
-        ->setGameState(
-            resetLevel(gameState)
-        );
+    return stagesLocator->resetLevelStage
+        ->setGameState(gameState);
 }
 
 RoundLostStage * RoundLostStage::setGameState(GameState gameState)
