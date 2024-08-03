@@ -23,6 +23,7 @@ GameState ResetLevelStage::resetLevel(GameState gameState)
 StageInterface *ResetLevelStage::run()
 {
     playResetLevelAnimation();
+    showLevelTransition(gameState.level, 1);
 
     GameState nextGameState = resetLevel(gameState);
 
@@ -45,4 +46,11 @@ void ResetLevelStage::playResetLevelAnimation()
         const int repeat = 20 / i;
         signals.all.blink(cycleDuration, repeat);
     }
+}
+
+void ResetLevelStage::showLevelTransition(int from, int to)
+{
+    dashboard->showLevelTransition(from, to);
+    delay(1500);
+    dashboard->clear();
 }
