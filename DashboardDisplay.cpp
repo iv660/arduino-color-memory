@@ -75,6 +75,13 @@ DashboardDisplay *DashboardDisplay::showRoundsLeft(int roundsLeft)
     return this;
 }
 
+DashboardDisplay* DashboardDisplay::showLivesLeftTransition(
+    int from, int to)
+{   
+    showReadoutTransition("N", from, to);
+    return this;
+}
+
 DashboardDisplay *DashboardDisplay::clear()
 {
     display.clear();

@@ -20,6 +20,7 @@ void RoundLostStage::waitForKey()
 StageInterface *RoundLostStage::run()
 {
     playRoundLostAnimation();
+    showLivesLeftTransition(gameState.lives, gameState.lives - 1);
     dropLife();
 
     return getNextStage();
@@ -50,4 +51,11 @@ RoundLostStage * RoundLostStage::setGameState(GameState gameState)
 {
     this->gameState = gameState;
     return this;
+}
+
+void RoundLostStage::showLivesLeftTransition(int from, int to)
+{
+    dashboard->showLivesLeftTransition(from, to);
+    delay(1500);
+    dashboard->clear();
 }

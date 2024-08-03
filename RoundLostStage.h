@@ -16,7 +16,7 @@ class RoundLostStage: public BaseStage
         StageInterface* getNextStage();
         bool hasLivesLeft();
         void dropLife();
-
+        void showLivesLeftTransition(int from, int to);
     public:
         StageInterface* run();
         RoundLostStage* setGameState(GameState gameState);
