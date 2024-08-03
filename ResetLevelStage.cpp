@@ -15,11 +15,16 @@ GameState ResetLevelStage::resetLevel(GameState gameState)
     return gameState;
 }
 
+/**
+ * Runs the ResetLevelStage by resetting the level and returning the next stage to be played.
+ *
+ * @return Pointer to the next stage to be played
+ */
 StageInterface *ResetLevelStage::run()
 {
     GameState nextGameState = resetLevel(gameState);
 
-    return stagesLocator->playRoundStage
+    return stagesLocator->confirmRoundStartStage
         ->setGameState(nextGameState);
 }
 

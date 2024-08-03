@@ -4,7 +4,7 @@
 StageInterface *ResetRoundStage::run()
 {
     playResetRoundAnimation();
-    return stagesLocator->resetLevelStage;
+    return stagesLocator->confirmRoundStartStage;
 }
 
 StageInterface * ResetRoundStage::setGameState(GameState gameState)

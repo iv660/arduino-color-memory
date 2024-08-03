@@ -21,7 +21,6 @@ StageInterface *RoundLostStage::run()
 {
     playRoundLostAnimation();
     dropLife();
-    waitForKey();
 
     return getNextStage();
 }
