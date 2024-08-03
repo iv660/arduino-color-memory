@@ -20,10 +20,31 @@ void RoundLostStage::waitForKey()
 StageInterface *RoundLostStage::run()
 {
     playRoundLostAnimation();
+    dropLife();
     waitForKey();
 
-    return stagesLocator->resetLevelStage
-        ->setGameState(gameState);
+    return getNextStage();
+}
+
+StageInterface *RoundLostStage::getNextStage()
+{
+    if (hasLivesLeft()) {
+        return stagesLocator->resetRoundStage
+            ->setGameState(gameState);
+    } else {
+        return stagesLocator->resetLevelStage
+            ->setGameState(gameState);
+    }
+}
+
+bool RoundLostStage::hasLivesLeft()
+{
+    return gameState.lives > 0;
+}
+
+void RoundLostStage::dropLife()
+{
+    gameState.lives--;
 }
 
 RoundLostStage * RoundLostStage::setGameState(GameState gameState)

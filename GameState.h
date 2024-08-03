@@ -8,6 +8,7 @@ struct GameState
     LevelOptions levelOptions;
     int roundsLeft = 5;
     int level = 1;
+    int lives = 1;
 };
 
 

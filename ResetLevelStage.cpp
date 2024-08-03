@@ -8,6 +8,7 @@ GameState ResetLevelStage::resetLevel(GameState gameState)
     gameState.levelOptions.roundsToPlay = 5;
     gameState.roundsLeft = gameState.levelOptions.roundsToPlay;
     gameState.level = 1;
+    gameState.lives = 3;
 
     stagesLocator->levelUpStage->reset();
 
