@@ -9,6 +9,7 @@
 #include "LevelUpStage.h"
 #include "ServiceLocator.h"
 #include "ResetLevelStage.h"
+#include "ResetRoundStage.h"
 
 class StagesLocator 
 {
@@ -27,6 +28,8 @@ class StagesLocator
       new LevelUpStage(this, serviceLocator);
     ResetLevelStage* resetLevelStage =
       new ResetLevelStage(this, serviceLocator);
+    ResetRoundStage* resetRoundStage =
+      new ResetRoundStage(this, serviceLocator);
 
     ExperimentStage* experimentStage = 
       new ExperimentStage(this, serviceLocator);
