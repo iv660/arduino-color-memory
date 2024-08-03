@@ -7,6 +7,7 @@
 #include "LevelUpInterface.h"
 #include "ExtendSequenceLevelUp.h"
 #include "AddLightsLevelUp.h"
+#include "AddRoundsLevelUp.h"
 #include "DashboardDisplay.h"
 
 class StageInterface;
@@ -19,7 +20,7 @@ class LevelUpStage : public BaseStage
         LevelUpInterface* levelUps[3] = {
             new ExtendSequenceLevelUp(),
             new AddLightsLevelUp(),
-            new ExtendSequenceLevelUp(),
+            new AddRoundsLevelUp(),
         };
         int levelUpIndex = 0;
         int levelUpsCount = 3;
