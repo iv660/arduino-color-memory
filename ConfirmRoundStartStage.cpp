@@ -19,7 +19,8 @@ void ConfirmRoundStartStage::waitForKey()
 StageInterface *ConfirmRoundStartStage::run()
 {
     waitForKey();
-    return stagesLocator->playRoundStage;
+    return stagesLocator->playRoundStage
+        ->setGameState(gameState);
 }
 
 StageInterface *ConfirmRoundStartStage::setGameState(GameState gameState)

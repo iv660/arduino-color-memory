@@ -11,6 +11,7 @@ class ResetRoundStage: public BaseStage
         GameState gameState;
 
         void playResetRoundAnimation();
+        GameState resetRound(GameState gameState);
     public:
         using BaseStage::BaseStage;
 
