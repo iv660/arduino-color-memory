@@ -22,6 +22,8 @@ GameState ResetLevelStage::resetLevel(GameState gameState)
  */
 StageInterface *ResetLevelStage::run()
 {
+    playResetLevelAnimation();
+
     GameState nextGameState = resetLevel(gameState);
 
     return stagesLocator->confirmRoundStartStage
@@ -34,4 +36,13 @@ StageInterface* ResetLevelStage::setGameState(GameState gameState)
     return this;
 }
 
-
+void ResetLevelStage::playResetLevelAnimation()
+{
+    SignalsDisplay signals;
+    const int baseDuration = 300;
+    for (int i; i <= 20; i += 2) {
+        const int cycleDuration = 30 * i;
+        const int repeat = 20 / i;
+        signals.all.blink(cycleDuration, repeat);
+    }
+}

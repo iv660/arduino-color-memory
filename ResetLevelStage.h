@@ -12,6 +12,7 @@ class ResetLevelStage: public BaseStage
     private:
         GameState gameState;
         GameState resetLevel(GameState gameState);
+        void playResetLevelAnimation();
     public:
         StageInterface* run();
         StageInterface* setGameState(GameState gameState);
