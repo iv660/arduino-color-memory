@@ -17,9 +17,15 @@ class LevelUpStage : public BaseStage
     private: 
         GameState gameState;
         
-        LevelUpInterface* levelUps[3] = {
+        LevelUpInterface* levelUps[9] = {
+            new ExtendSequenceLevelUp(),
             new ExtendSequenceLevelUp(),
             new AddLightsLevelUp(),
+            new ExtendSequenceLevelUp(),
+            new AddLightsLevelUp(),
+            new ExtendSequenceLevelUp(),
+            new AddLightsLevelUp(),
+            new ExtendSequenceLevelUp(),
             new AddRoundsLevelUp(),
         };
         int levelUpIndex = 0;

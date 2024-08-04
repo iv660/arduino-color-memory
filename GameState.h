@@ -6,7 +6,7 @@
 struct GameState
 {
     LevelOptions levelOptions;
-    int roundsLeft = 5;
+    int roundsLeft = LevelOptions().roundsToPlay;
     int level = 1;
     int lives = 3;
 };
