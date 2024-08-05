@@ -63,6 +63,12 @@ DashboardDisplay *DashboardDisplay::showHighScore(int score)
     return this;
 }
 
+DashboardDisplay * DashboardDisplay::showHighScoreTransition(int from, int to)
+{
+    showReadoutTransition("P", from, to);
+    return this;
+}
+
 DashboardDisplay * DashboardDisplay::showMovesLeft(int movesLeft)
 {
     showInstantReadout("*", movesLeft);

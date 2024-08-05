@@ -10,6 +10,12 @@ GameState ResetLevelStage::resetLevel(GameState gameState)
     return cleanGameState;
 }
 
+int ResetLevelStage::getNewHighScore(
+    int levelReached, int currentHighScore)
+{
+    return max(currentHighScore, levelReached);
+}
+
 /**
  * Runs the ResetLevelStage by resetting the level and returning the next stage to be played.
  *
@@ -21,6 +27,9 @@ StageInterface *ResetLevelStage::run()
     showLevelTransition(gameState.level, 1);
 
     GameState nextGameState = resetLevel(gameState);
+    nextGameState.highScore = getNewHighScore(
+        gameState.level, gameState.highScore);
+    showHighScore(gameState.highScore, nextGameState.highScore);
 
     return stagesLocator->confirmRoundStartStage
         ->setGameState(nextGameState);
@@ -48,4 +57,13 @@ void ResetLevelStage::showLevelTransition(int from, int to)
     dashboard->showLevelTransition(from, to);
     delay(1500);
     dashboard->clear();
+}
+
+void ResetLevelStage::showHighScore(int currentHighScore, int newHighScore)
+{
+    if (currentHighScore == newHighScore) {
+        dashboard->showHighScore(currentHighScore);
+    } else {
+        dashboard->showHighScoreTransition(currentHighScore, newHighScore);
+    }
 }

@@ -19,6 +19,7 @@ class DashboardDisplay
        DashboardDisplay* showLevel(int level);
        DashboardDisplay* showLevelTransition(int from, int to);
        DashboardDisplay* showHighScore(int score);
+       DashboardDisplay* showHighScoreTransition(int from, int to);
        DashboardDisplay* showMovesLeft(int movesLeft);
        DashboardDisplay* showRoundsLeft(int roundsLeft);
        DashboardDisplay* showLivesLeftTransition(int from, int to);
