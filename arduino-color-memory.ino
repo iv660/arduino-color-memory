@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "StageInterface.h"
 #include "StagesLocator.h"
+#include "ServiceLocator.h"
 
 const StagesLocator* stagesLocator = new StagesLocator;
 StageInterface* currentStage = stagesLocator->startupStage;
@@ -9,7 +10,8 @@ StageInterface* currentStage = stagesLocator->startupStage;
 void setup() 
 {
   randomSeed(analogRead(A5) * 10);
-  Serial.begin(9600);
+  // Serial.begin(9600);
+  // while(!Serial);
 }
 
 // the loop function runs over and over again forever

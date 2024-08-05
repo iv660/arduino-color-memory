@@ -17,31 +17,45 @@ void RoundLostStage::waitForKey()
     while(key.isUp());
 }
 
-GameState RoundLostStage::resetLevel(GameState gameState)
-{
-    gameState.levelOptions.sequenceLength = 1;
-    gameState.levelOptions.maxValue = 2;
-    gameState.levelOptions.roundsToPlay = 5;
-    gameState.roundsLeft = gameState.levelOptions.roundsToPlay;
-
-    stagesLocator->levelUpStage->reset();
-
-    return gameState;
-}
-
 StageInterface *RoundLostStage::run()
 {
     playRoundLostAnimation();
-    waitForKey();
+    showLivesLeftTransition(gameState.lives, gameState.lives - 1);
+    dropLife();
 
-    return stagesLocator->playRoundStage
-        ->setGameState(
-            resetLevel(gameState)
-        );
+    return getNextStage();
+}
+
+StageInterface *RoundLostStage::getNextStage()
+{
+    if (hasLivesLeft()) {
+        return stagesLocator->resetRoundStage
+            ->setGameState(gameState);
+    } else {
+        return stagesLocator->resetLevelStage
+            ->setGameState(gameState);
+    }
+}
+
+bool RoundLostStage::hasLivesLeft()
+{
+    return gameState.lives > 0;
+}
+
+void RoundLostStage::dropLife()
+{
+    gameState.lives--;
 }
 
 RoundLostStage * RoundLostStage::setGameState(GameState gameState)
 {
     this->gameState = gameState;
     return this;
+}
+
+void RoundLostStage::showLivesLeftTransition(int from, int to)
+{
+    dashboard->showLivesLeftTransition(from, to);
+    delay(1500);
+    dashboard->clear();
 }

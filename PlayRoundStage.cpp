@@ -1,14 +1,16 @@
 #include <Arduino.h>
+#include "const.h"
 #include "PlayRoundStage.h"
 #include "StageInterface.h"
+#include "ServiceLocator.h"
 #include "StagesLocator.h"
 #include "Light.h"
 #include "SignalsDisplay.h"
+#include "DashboardDisplay.h"
+#include "BaseStage.h"
 
 int PlayRoundStage::getSequenceLenght()
 {
-    Serial.print("Sequence length: ");
-    Serial.println(gameState.levelOptions.sequenceLength);
     return gameState.levelOptions
         .sequenceLength;
 }
@@ -20,6 +22,7 @@ void PlayRoundStage::waitFor(int pauseMillis)
 
 StageInterface* PlayRoundStage::run() 
 {
+    dashboard->clear();
     playSequence();
     playReadyForInputAnimation();
     bool inputIsCorrect = checkInputAgainstSequence();
@@ -52,17 +55,17 @@ void PlayRoundStage::playReadyForInputAnimation()
 
 bool PlayRoundStage::checkInputAgainstSequence()
 {
-    Serial.println("checkInputAgainstSequence() >>>");
+    dashboard->clear();
     for (int index = 1; index <= getSequenceLenght(); index++) {
-        Serial.println("Inside loop >>>");
+        dashboard->showMovesLeft(getSequenceLenght() - index + 1);
         int key = keypad.getInput();
-        Serial.print("Got key input: ");
-        Serial.println(key);
         if (false == sequence.checkInput(index, key)) {
-            Serial.println("Input is wrong!");
+            dashboard->clear();
             return false;
         }
     }
+
+    dashboard->clear();
     
     return true;
 }
@@ -76,3 +79,10 @@ StageInterface* PlayRoundStage::getNextStage(bool inputIsCorrect)
     return stagesLocator->roundLostStage
         ->setGameState(gameState);
 }
+
+void PlayRoundStage::showRoundsLeft()
+{
+    dashboard->showRoundsLeft(gameState.roundsLeft);
+    delay(1000);
+}
+

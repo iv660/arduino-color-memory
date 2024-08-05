@@ -4,7 +4,7 @@
 struct LevelOptions
 {
     int sequenceLength = 1;
-    int roundsToPlay = 5;
+    int roundsToPlay = 3;
     int maxValue = 2;
 };
 
