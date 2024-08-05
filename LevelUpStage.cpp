@@ -1,3 +1,4 @@
+#include "const.h"
 #include "LevelUpStage.h"
 #include "StagesLocator.h"
 #include "ExtendSequenceLevelUp.h"
@@ -5,7 +6,10 @@
 StageInterface *LevelUpStage::run()
 {
     playLevelUpAnimation();
+    showLevelTransition(gameState.level, gameState.level + 1);
+    gameState.level++;
     delay(1500);
+    dashboard->clear();
 
     return stagesLocator->playRoundStage
         ->setGameState(levelUp(gameState));
@@ -36,6 +40,11 @@ GameState LevelUpStage::levelUp(GameState gameState)
     updatedGameState.roundsLeft = updatedGameState.levelOptions.roundsToPlay;
 
     return updatedGameState;
+}
+
+void LevelUpStage::showLevelTransition(int from, int to)
+{
+    dashboard->showLevelTransition(from, to);
 }
 
 LevelUpInterface *LevelUpStage::getLevelUpFor(GameState gameState)

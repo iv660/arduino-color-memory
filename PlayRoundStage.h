@@ -1,6 +1,7 @@
 #ifndef PLAYROUNDSTAGE_H
 #define PLAYROUNDSTAGE_H
 
+#include "const.h"
 #include "BaseStage.h"
 #include "StageInterface.h"
 #include "Sequence.h"
@@ -9,6 +10,7 @@
 #include "SignalsDisplay.h"
 #include "LevelOptions.h"
 #include "GameState.h"
+#include "DashboardDisplay.h"
 
 class PlayRoundStage: public BaseStage
 {
@@ -33,6 +35,7 @@ class PlayRoundStage: public BaseStage
     void playSequence();
     void playReadyForInputAnimation();
     bool checkInputAgainstSequence();
+    void showRoundsLeft();
 
     // Factory methods
     StageInterface* getNextStage(bool inputIsCorrect);
