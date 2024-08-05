@@ -22,6 +22,7 @@ void PlayRoundStage::waitFor(int pauseMillis)
 
 StageInterface* PlayRoundStage::run() 
 {
+    dashboard->clear();
     playSequence();
     playReadyForInputAnimation();
     bool inputIsCorrect = checkInputAgainstSequence();

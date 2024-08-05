@@ -3,12 +3,16 @@
 
 #include "BaseStage.h"
 #include "StageInterface.h"
+#include "GameState.h"
 
 class StartupStage: public BaseStage
 {
   using BaseStage::BaseStage;
 
   private:
+    GameState gameState;
+
+    void showHighScore();
     void waitForKeyPress();
     void shuffleRandomGenerator();
 

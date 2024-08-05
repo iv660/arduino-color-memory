@@ -21,8 +21,14 @@ void StartupStage::shuffleRandomGenerator()
   random(1, 5);
 }
 
+void StartupStage::showHighScore()
+{
+  dashboard->showHighScore(gameState.highScore);
+}
+
 StageInterface* StartupStage::run() 
 {
+  showHighScore();
   waitForKeyPress();
 
   return stagesLocator->playRoundStage;

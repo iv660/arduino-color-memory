@@ -9,6 +9,7 @@ struct GameState
     int roundsLeft = LevelOptions().roundsToPlay;
     int level = 1;
     int lives = 3;
+    int highScore = 0;
 };
 
 
