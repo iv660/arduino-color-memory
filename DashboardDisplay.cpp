@@ -65,7 +65,7 @@ DashboardDisplay *DashboardDisplay::showHighScore(int score)
 
 DashboardDisplay * DashboardDisplay::showMovesLeft(int movesLeft)
 {
-    showInstantReadout("O", movesLeft);
+    showInstantReadout("*", movesLeft);
     return this;
 }
 
