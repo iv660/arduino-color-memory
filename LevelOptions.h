@@ -3,7 +3,7 @@
 
 struct LevelOptions
 {
-    int sequenceLength = 1;
+    int sequenceLength = 3;
     int roundsToPlay = 3;
     int maxValue = 2;
     int sequenceDisplayDuration = 700;
