@@ -4,33 +4,50 @@
 #include "const.h"
 #include "Key.h"
 #include "Light.h"
+#include "storage/Storage.cpp"
 
-void StartupStage::waitForKeyPress() {
+void StartupStage::waitForKeyPress()
+{
+    pinMode(KEY1, INPUT);
 
-  pinMode(KEY1, INPUT);
-  
-  while (digitalRead(KEY1) == LOW) {
-    shuffleRandomGenerator();
-  }
+    while (digitalRead(KEY1) == LOW)
+    {
+        shuffleRandomGenerator();
+    }
 
-  return;
+    return;
 }
 
 void StartupStage::shuffleRandomGenerator()
 {
-  random(1, 5);
+    random(1, 5);
+}
+
+void StartupStage::initGameState()
+{
+    GameState clearGameState;
+    gameState = clearGameState;
+
+    PersistentData data = getPersistentData();
+
+    gameState.highScore = data.highScore;
+}
+
+PersistentData StartupStage::getPersistentData()
+{
+    return Storage().getData();
 }
 
 void StartupStage::showHighScore()
 {
-  dashboard->showHighScore(gameState.highScore);
+    dashboard->showHighScore(gameState.highScore);
 }
 
-StageInterface* StartupStage::run() 
+StageInterface *StartupStage::run()
 {
-  showHighScore();
-  waitForKeyPress();
+    initGameState();
+    showHighScore();
+    waitForKeyPress();
 
-  return stagesLocator->playRoundStage;
+    return stagesLocator->playRoundStage->setGameState(gameState);
 }
-
