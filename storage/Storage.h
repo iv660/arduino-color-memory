@@ -13,6 +13,7 @@ class Storage
         PersistentData getData();
         Storage* setHighScore(int highScore);
         void store();
+        void reset();
 };
 
 #endif // STORAGE_H

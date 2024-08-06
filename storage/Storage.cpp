@@ -33,3 +33,9 @@ void Storage::store()
 {
     EEPROM.put(1, data);
 }
+
+void Storage::reset()
+{
+    data = PersistentData();
+    store();
+}
