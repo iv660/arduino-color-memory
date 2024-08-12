@@ -24,8 +24,6 @@ class PlayRoundStage: public BaseStage
 
     // Gameplay level options
     GameState gameState;
-    int duration = 700;
-    int pause = 300;
     int sequenceLength = 1;
     int minValue = 1;
     int getSequenceLenght();

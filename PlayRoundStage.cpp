@@ -42,8 +42,9 @@ void PlayRoundStage::playSequence()
     sequence.generate(getSequenceLenght(), minValue, 
         gameState.levelOptions.maxValue);
     while (sequence.hasNext()) {
-        sequenceDisplay.show(sequence.next(), duration);
-        waitFor(pause);
+        sequenceDisplay.show(sequence.next(), 
+            gameState.levelOptions.sequenceDisplayDuration);
+        waitFor(gameState.levelOptions.sequenceDisplayPause);
     }
 }
 

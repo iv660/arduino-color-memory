@@ -1,5 +1,6 @@
 #include "ResetLevelStage.h"
 #include "StagesLocator.h"
+#include "storage/Storage.h"
 
 GameState ResetLevelStage::resetLevel(GameState gameState)
 {
@@ -30,6 +31,11 @@ StageInterface *ResetLevelStage::run()
     nextGameState.highScore = getNewHighScore(
         gameState.level, gameState.highScore);
     showHighScore(gameState.highScore, nextGameState.highScore);
+
+    if (gameState.highScore != nextGameState.highScore) {
+        Storage().setHighScore(nextGameState.highScore)
+            ->store();
+    }
 
     return stagesLocator->confirmRoundStartStage
         ->setGameState(nextGameState);
