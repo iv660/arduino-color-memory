@@ -6,6 +6,8 @@ struct LevelOptions
     int sequenceLength = 1;
     int roundsToPlay = 3;
     int maxValue = 2;
+    int sequenceDisplayDuration = 700;
+    int sequenceDisplayPause = 300;
 };
 
 #endif // LEVELOPTIONS_H

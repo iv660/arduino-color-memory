@@ -4,20 +4,22 @@
 #include "BaseStage.h"
 #include "StageInterface.h"
 #include "GameState.h"
+#include "storage/PersistentData.h"
 
 class StartupStage: public BaseStage
 {
-  using BaseStage::BaseStage;
+    using BaseStage::BaseStage;
 
-  private:
-    GameState gameState;
+    private:
+        GameState gameState;
 
-    void showHighScore();
-    void waitForKeyPress();
-    void shuffleRandomGenerator();
-
-  public: 
-    StageInterface* run();
+        void showHighScore();
+        void waitForKeyPress();
+        void shuffleRandomGenerator();
+        void initGameState();
+        PersistentData getPersistentData();
+    public: 
+        StageInterface* run();
 };
 
 #endif // !STARTUPSTAGE_H
