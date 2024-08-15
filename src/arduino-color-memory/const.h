@@ -3,14 +3,26 @@
 
 #include <Arduino.h>
 
-#define KEY1 PIN2
-#define KEY2 PIN4
-#define KEY3 PIN6
-#define KEY4 8
-#define KEY5 10
+#define KEY1 10
+#define KEY2 8
+#define KEY3 6
+#define KEY4 4
+#define KEY5 2
 
-#define DASHBOARD_DIO PIN0
-#define DASHBOARD_CLK PIN1
+#define LIGHT_RED 11
+#define LIGHT_BLUE 9
+#define LIGHT_YELLOW 7
+#define LIGHT_WHITE 5
+#define LIGHT_GREEN 3
+
+#define VALUE_1_PIN LIGHT_RED
+#define VALUE_2_PIN LIGHT_BLUE
+#define VALUE_3_PIN LIGHT_YELLOW
+#define VALUE_4_PIN LIGHT_WHITE
+#define VALUE_5_PIN LIGHT_GREEN
+
+#define DASHBOARD_DIO 13
+#define DASHBOARD_CLK 12
 
 #define START_KEY KEY1
 
