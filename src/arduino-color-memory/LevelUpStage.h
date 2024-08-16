@@ -31,10 +31,13 @@ class LevelUpStage : public BaseStage
             new SpeedUpLevelUp(),
         };
         int levelUpIndex = 0;
+        // @todo Fix level-ups count
         int levelUpsCount = 3;
 
         GameState levelUp(GameState gameState);
+        GameState applyPowerUps(GameState gameState);
         void showLevelTransition(int from, int to);
+        void showLivesTransition(int from, int to);
         void playLevelUpAnimation();
         int nextLevelUpIndex();
         LevelUpInterface* getLevelUpFor(GameState gameState);
