@@ -12,7 +12,28 @@ StageInterface *LevelUpStage::run()
     dashboard->clear();
 
     return stagesLocator->playRoundStage
-        ->setGameState(levelUp(gameState));
+        ->setGameState(
+            applyPowerUps(
+                levelUp(gameState)
+            )
+        );
+}
+
+GameState LevelUpStage::applyPowerUps(GameState gameState)
+{
+    int levelJustPlayed = gameState.level - 1;
+    if (levelJustPlayed % 5 != 0) {
+        return gameState;
+    }
+
+    GameState updatedGameState = gameState;
+
+    int const maxLives = 5;
+    updatedGameState.lives = min(updatedGameState.lives + 3, maxLives);
+
+    showLivesTransition(gameState.lives, updatedGameState.lives);
+
+    return updatedGameState;
 }
 
 LevelUpStage* LevelUpStage::setGameState(GameState gameState)
@@ -45,6 +66,12 @@ GameState LevelUpStage::levelUp(GameState gameState)
 void LevelUpStage::showLevelTransition(int from, int to)
 {
     dashboard->showLevelTransition(from, to);
+}
+
+void LevelUpStage::showLivesTransition(int from, int to)
+{
+    dashboard->showLivesLeftTransition(from, to);
+    delay(1000);
 }
 
 LevelUpInterface *LevelUpStage::getLevelUpFor(GameState gameState)
