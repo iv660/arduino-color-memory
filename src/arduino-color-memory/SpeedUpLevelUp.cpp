@@ -1,11 +1,7 @@
 #include "SpeedUpLevelUp.h"
 
-GameState SpeedUpLevelUp::updateState(GameState gameState)
+GameState SpeedUpLevelUp::speedUp(GameState gameState)
 {
-    if (!canHandle(gameState)) {
-        return gameState;
-    }
-
     if (gameState.levelOptions.sequenceDisplayDuration > 100) {
         gameState.levelOptions.sequenceDisplayDuration -= 100;
     }
@@ -15,6 +11,27 @@ GameState SpeedUpLevelUp::updateState(GameState gameState)
     }
 
     return gameState;
+}
+
+GameState SpeedUpLevelUp::resetSequenceLength(GameState gameState)
+{
+    gameState.levelOptions.sequenceLength = 3;
+
+    return gameState;
+}
+
+GameState SpeedUpLevelUp::updateState(GameState gameState)
+{
+    if (!canHandle(gameState)) {
+        return gameState;
+    }
+
+    GameState updatedGameState = gameState;
+
+    updatedGameState = speedUp(updatedGameState);
+    updatedGameState = resetSequenceLength(updatedGameState);
+
+    return updatedGameState;
 }
 
 bool SpeedUpLevelUp::canHandle(GameState gameState)
